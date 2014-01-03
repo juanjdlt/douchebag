@@ -1,0 +1,70 @@
+<div class="table-responsive">
+		<table class="table table-hover">
+        <thead>
+        	<tr>
+            	<th>Name</th>
+            	<th>Last Douche</th>
+            	<th>Points</th>
+                <th></th>
+          	</tr>
+        </thead>
+        <tbody>
+          	<tr ng-repeat="user in users | orderBy:'-points'">
+            	<td>{{user.username}}</td>
+            	<td>{{user.the_thing}}</td>
+            	<td>{{user.points}}</td>
+                <td><a href="#/list/{{user.username}}/{{user.id}}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+          	</tr>
+        </tbody>
+      </table>    			
+</div>
+
+
+<!-- Modals -->
+<div class="modal fade" id="new_douche" tabindex="-1" role="dialog" aria-labelledby="new_douche_label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title" id="new_douche_label">New one !</h4>
+          </div>
+          <div class="modal-body">
+              <form class="form-horizontal" role="form" ng-submit="addDouche()" novalidate name="new_douche_form">
+                  <div class="form-group">
+                    <label for="username" class="col-sm-2 control-label">Username</label>
+                    <div class="col-sm-10">
+                      <input class="form-control" type="text" ng-model="new_douche.username" typeahead="username for username in usernames | filter:$viewValue | limitTo:8" typeahead-editable="false" required>                
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="the_thing" class="col-sm-2 control-label">The thing</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="word/description/act etc.." ng-model="new_douche.the_thing" required>
+                    </div>
+                </div>
+              <!-- <div class="form-group">
+                 <div class="checkbox">
+                  <label>
+                      <input type="checkbox"> has paid ? 
+                  </label>
+                </div>
+            </div> -->
+            <div class="form-group">
+                <label for="" class="col-sm-2 control-label">Type</label>
+                <div class="col-sm-10">             
+                    <select class="form-control" ng-model="new_douche.type" required>
+                      <option value="1" selected>bad words</option>
+                      <option value="2">bugs</option>
+                  </select>
+              </div>
+          </div>
+          <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-warning">#$%!</button>
+            </div>
+        </div>
+    </form>
+</div>
+</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
